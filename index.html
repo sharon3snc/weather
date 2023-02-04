@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UEMWeather</title>
+
+    <script src="./index.js"></script>
+    <link rel="stylesheet" href="./index.css" />
+</head>
+<body>
+    <header>
+        <div>UEMWeather</div>
+        <nav>
+            <a href="#">Help</a>
+            <a href="#">About</a>
+        </nav>
+    </header>
+    <main>
+        <div class="container"></div>
+        <label for="city">Ciudad:</label>
+        <input type="text" name="city" id="city" required />
+        <button onclick="getLatitud()" id="ver">Ver el tiempo</button>
+        <div id="resultado">         </div>
+    </main>
+    <footer>
+        <span>© 2010-<!-- -->2022<!-- --> <!-- -->UEMWeather</span>
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="#">Legal</a>
+    </footer>
+</body>
+</html>

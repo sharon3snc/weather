@@ -15,6 +15,7 @@ var WEATHER_API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&lo
 */
 
 function getLatitud() {
+    var city= document.getElementById ("city").value;
     console.log("--- getting latitud");
 
     fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}`)
@@ -23,7 +24,7 @@ function getLatitud() {
         })
         .then(function(data) {
             console.log(data);
-            addUsersToPage(data);
+            getWeather(data);
         })
         .catch(function(error) {
             console.log(error);
@@ -32,8 +33,11 @@ function getLatitud() {
 
 
 
-function getPostsByUser(userId) {
+function getWeather(data) {
     console.log("--- getting data for weather", city);
+    var lat= data.results[0].latitude;
+    var lon= data.results[0].longitude;
+    var timezone= data.results[0].timezone;
 
     document.getElementById("resultado").innerHTML = 'Clima para: ' + city;
 
@@ -43,7 +47,7 @@ function getPostsByUser(userId) {
         })
         .then(function(data) {
             console.log(data);
-            addPostsToPage(data);
+            addPostsToPage(data); //esta funcion se nombraria con otro nombre y luego abajo la defino
         })
         .catch(function(error) {
             console.log(error);

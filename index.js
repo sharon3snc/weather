@@ -34,7 +34,7 @@ function getLatitud() {
 
 
 function getWeather(data) {
-    console.log("--- getting data for weather", city);
+    console.log("--- getting data for weather" + city);
     var lat= data.results[0].latitude;
     var lon= data.results[0].longitude;
     var timezone= data.results[0].timezone;
@@ -47,7 +47,7 @@ function getWeather(data) {
         })
         .then(function(data) {
             console.log(data);
-            addPostsToPage(data); //esta funcion se nombraria con otro nombre y luego abajo la defino
+            addWeatherToPage(data); 
         })
         .catch(function(error) {
             console.log(error);
@@ -55,6 +55,28 @@ function getWeather(data) {
 }
 
 
+function addWeatherToPage(weatherList) {
+
+    var HTML = '';
+    
+    for (let index = 0; index < weatherList.length; index++) {
+        const weather = weatherList[index];
+
+        HTML += `
+            <div class="weather">
+                <div>${weather.time}</div>
+                <div>${weather.temperature_2m_max}</div>
+                <div>${weather.temperature_2m_min}</div>
+                <div>${weather.rain_sum}</div>
+                <div>${weather.windspeed_10m_max}</div>
+                <button onclick="getPostsByUser(${weather.id})">Get Weather</button>
+            </div>
+        `
+    }
+
+    console.log(weatherList)
+    document.getElementById("weatherList").innerHTML = HTML;
+}
 
 
 

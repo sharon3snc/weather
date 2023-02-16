@@ -39,7 +39,7 @@ function getWeather(data) {
     var lon= data.results[0].longitude;
     var timezone= data.results[0].timezone;
 
-    document.getElementById("resultado").innerHTML = 'Clima para: ' + city;
+    document.getElementById("resultado").innerHTML = ("Clima para:" + city);
 
     fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&timezone=${timezone}&daily=weathercode,temperature_2m_max,temperature_2m_min,rain_sum,windspeed_10m_max`)
         .then(function(response) {
@@ -63,13 +63,12 @@ function addWeatherToPage(weatherList) {
         const weather = weatherList[index];
 
         HTML += `
-            <div class="weather">
+            <div class="weather" id="weather-${weather.id}">
                 <div>${weather.time}</div>
                 <div>${weather.temperature_2m_max}</div>
                 <div>${weather.temperature_2m_min}</div>
                 <div>${weather.rain_sum}</div>
                 <div>${weather.windspeed_10m_max}</div>
-                <button onclick="getPostsByUser(${weather.id})">Get Weather</button>
             </div>
         `
     }
@@ -77,6 +76,8 @@ function addWeatherToPage(weatherList) {
     console.log(weatherList)
     document.getElementById("weatherList").innerHTML = HTML;
 }
+
+
 
 
 

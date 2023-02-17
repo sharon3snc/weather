@@ -64,11 +64,11 @@ function addWeatherToPage(weatherList) {
 
         HTML += `
             <div class="weather" id="weather-${weather.id}">
-                <div>${weather.time}</div>
-                <div>${weather.temperature_2m_max}</div>
-                <div>${weather.temperature_2m_min}</div>
-                <div>${weather.rain_sum}</div>
-                <div>${weather.windspeed_10m_max}</div>
+                <div>${weather.daily.time}</div>
+                <div>${weather.daily.temperature_2m_max}</div>
+                <div>${weather.daily.temperature_2m_min}</div>
+                <div>${weather.daily.rain_sum}</div>
+                <div>${weather.daily.windspeed_10m_max}</div>
             </div>
         `
     }

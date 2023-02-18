@@ -75,28 +75,15 @@ function addWeatherToPage(weatherList) {
                 </div> `             
 
     }
-
     document.getElementById("resultado").innerHTML = HTML;
-}
-
-
-
-function getIcon (weathercode) {
-    var imagen = "  "
-
-	 if (weathercode="0") 
-     { imagen = "./images/sun.jpg";
-    console.log("imagen")}
-
-
-document.getElementById("icon").src=imagen;
+    
 }
 
 
 
 
 /*
-if weathe="1,2,3,45,48,51,53,55,56,57" then imagen = "./images/clouds.jpg"; 
+if weather="1,2,3,45,48,51,53,55,56,57" then imagen = "./images/clouds.jpg"; 
 case "61,63,65,66,67,80,81,82": imagen = "./images/rain.jpg"; break;
 case "71,73,75,77,85,86": imagen = "./images/rain.jpg"; break;
 case "95,96,99": imagen = "./images/thunderstorm.jpg"; break;} */

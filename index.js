@@ -27,10 +27,9 @@ function getLatitud(city) {
             getWeather(data);
         })
         .catch(function(error) {
-            console.log(error);
+            console.log("error",error);
         });
 }
-
 
 
 function getWeather(data) {
@@ -51,25 +50,28 @@ function getWeather(data) {
         })
         .catch(function(error) {
             console.log(error);
-            document.getElementById("resultado").innerHTML = ("Ciudad errónea");
         });
 }
+
 
 
 function addWeatherToPage(weatherList) {
 
     var HTML = ``;
-   
+
     for (let index = 0; index < 7; index++) {
         let weather= weatherList.daily;
 
         HTML += `
                 <div class="weather" id="resultado-${weather.weathercode[index]}">
-                    <div>${weather.time[index]}</div>
-                    <div>${weather.temperature_2m_max[index]}</div>
-                    <div>${weather.temperature_2m_min[index]}</div>
-                    <div>${weather.rain_sum[index]}</div>
-                    <div>${weather.windspeed_10m_max[index]}</div>        
+                    <div class="title">${weather.time[index]}</div>
+                    
+                    <div><img src="./images/clouds.png" id="icon"/> </div>
+                    <span class= "min">${weather.temperature_2m_min[index]}ºC</span>
+                    <span> / </span>
+                    <span class="max">${weather.temperature_2m_max[index]}ºC</span>
+                    <div> LLuvia: ${weather.rain_sum[index]} mm </div>
+                    <div> Viento: ${weather.windspeed_10m_max[index]} km/h</div>        
                 </div> `             
 
     }
@@ -79,5 +81,23 @@ function addWeatherToPage(weatherList) {
 
 
 
+function getIcon (weathercode) {
+    var imagen = "  "
 
+	 if (weathercode="0") 
+     { imagen = "./images/sun.jpg";
+    console.log("imagen")}
+
+
+document.getElementById("icon").src=imagen;
+}
+
+
+
+
+/*
+if weathe="1,2,3,45,48,51,53,55,56,57" then imagen = "./images/clouds.jpg"; 
+case "61,63,65,66,67,80,81,82": imagen = "./images/rain.jpg"; break;
+case "71,73,75,77,85,86": imagen = "./images/rain.jpg"; break;
+case "95,96,99": imagen = "./images/thunderstorm.jpg"; break;} */
 

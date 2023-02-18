@@ -1,7 +1,5 @@
 html {
     box-sizing: border-box;
-    border: 1px;
-    border-color:#1a1a1a;
 }
 *, *:before, *:after {
     box-sizing: inherit;
@@ -68,3 +66,28 @@ main {
 }
 
 
+#resultado {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top:60px;
+}
+
+.weather{
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #1a1a1a;
+    border-radius: 4px;
+    background-color: whitesmoke;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.min{
+   color:blue;
+}
+
+.max{
+    color:red;
+}

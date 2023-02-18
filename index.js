@@ -14,9 +14,9 @@ var timezone = ...
 var WEATHER_API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&timezone=${timezone}&daily=weathercode,temperature_2m_max,temperature_2m_min,rain_sum,windspeed_10m_max`;
 */
 
-function getLatitud() {
-    var city= document.getElementById ("city").value;
-    console.log("--- getting latitud");
+function getLatitud(city) {
+    var city= document.getElementById("city").value;
+    console.log("--- getting latitud for "+ city);
 
     fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}`)
         .then(function(response) {
@@ -39,7 +39,7 @@ function getWeather(data) {
     var lon= data.results[0].longitude;
     var timezone= data.results[0].timezone;
 
-    document.getElementById("resultado").innerHTML = ("Clima para:" + city);
+    document.getElementById("resultado").innerHTML = ("Obteniendo clima para: " + city);
 
     fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&timezone=${timezone}&daily=weathercode,temperature_2m_max,temperature_2m_min,rain_sum,windspeed_10m_max`)
         .then(function(response) {
@@ -57,24 +57,26 @@ function getWeather(data) {
 
 function addWeatherToPage(weatherList) {
 
-    var HTML = '';
-    
-    for (let index = 0; index < weatherList.length; index++) {
-        const weather = weatherList[index];
+    var HTML = ``;
+   
+    for (let index = 0; index < 7; index++) {
+        let weather= weatherList.daily;
 
         HTML += `
-            <div class="weather" id="weather-${weather.id}">
-                <div>${weather.daily.time}</div>
-                <div>${weather.daily.temperature_2m_max}</div>
-                <div>${weather.daily.temperature_2m_min}</div>
-                <div>${weather.daily.rain_sum}</div>
-                <div>${weather.daily.windspeed_10m_max}</div>
-            </div>
-        `
+                <div class="weather" id="weather-${weather.weathercode[index]}">
+                    <div>${weather.time[index]}</div>
+                    <div>${weather.temperature_2m_max[index]}</div>
+                    <div>${weather.temperature_2m_min[index]}</div>
+                    <div>${weather.rain_sum[index]}</div>
+                    <div>${weather.windspeed_10m_max[index]}</div>        
+                </div> `             
+
+                console.log("weather es" + weather);
     }
 
-    console.log(weatherList)
-    document.getElementById("weatherList").innerHTML = HTML;
+
+
+    document.getElementById("weather").innerHTML = HTML;
 }
 
 

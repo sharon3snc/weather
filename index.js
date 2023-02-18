@@ -51,6 +51,7 @@ function getWeather(data) {
         })
         .catch(function(error) {
             console.log(error);
+            document.getElementById("resultado").innerHTML = ("Ciudad errónea");
         });
 }
 
@@ -63,7 +64,7 @@ function addWeatherToPage(weatherList) {
         let weather= weatherList.daily;
 
         HTML += `
-                <div class="weather" id="weather-${weather.weathercode[index]}">
+                <div class="weather" id="resultado-${weather.weathercode[index]}">
                     <div>${weather.time[index]}</div>
                     <div>${weather.temperature_2m_max[index]}</div>
                     <div>${weather.temperature_2m_min[index]}</div>
@@ -71,12 +72,9 @@ function addWeatherToPage(weatherList) {
                     <div>${weather.windspeed_10m_max[index]}</div>        
                 </div> `             
 
-                console.log("weather es" + weather);
     }
 
-
-
-    document.getElementById("weather").innerHTML = HTML;
+    document.getElementById("resultado").innerHTML = HTML;
 }
 
 

@@ -101,33 +101,3 @@ main {
     font-size: 12px;
 }
 
-#0{
-    background-image: (url"./images.sun.png");
-    width:100px;
-    height:100px;
-}
-
-#1{
-    background-image: (url "./images.clouds.png");
-    width:100px;
-    height:100px;
-}
-
-#2{
-    background-image: (url "./images.rain.png");
-    width:100px;
-    height:100px;
-}
-
-#3{
-    background-image: (url "./images.snow.png");
-    width:100px;
-    height:100px;
-}
-
-#4{
-    background-image: (url "./images.thunderstorm.png");
-    width:100px;
-    height:100px;
-}
-

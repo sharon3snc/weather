@@ -74,7 +74,7 @@ function addWeatherToPage(weatherList) {
         HTML += `
                 <div class="weather" id="resultado-${weather.weathercode[index]}">
                     <div class="title">${weather.time[index]}</div>       
-                    <div id= "getIcon(${weather.weathercode[index]})"> </div>
+                    <div class="imagen" src="${getIcon(weather.weathercode[index])}"> Imagen </div>
                     <div id="temp">
                         <span class= "min">${weather.temperature_2m_min[index]}ºC</span>
                         <span> / </span>
@@ -83,30 +83,38 @@ function addWeatherToPage(weatherList) {
                     <div  id="lluvia"> LLuvia: ${weather.rain_sum[index]} mm </div>
                     <div id="viento"> Viento: ${weather.windspeed_10m_max[index]} km/h</div>        
                 </div> `             
-
     }
     document.getElementById("resultado").innerHTML = HTML;
 }
 
 
-function getIcon (weather){
-    if (weathercode==0){
-        return "0";
+function getIcon (weathercode){
+
+    console.log(weathercode);
+
+    if (weathercode===0){
+        return "./images/sun.png";
     }
-    else if (weathercode==1 || 2 || 3 || 45 || 48 || 51 || 53 || 55 || 56 || 57){
-        return "1";
+    else if (weathercode===1 || weathercode===2 || weathercode===3 || weathercode===45 || 
+        weathercode===48 || weathercode===51 || weathercode===53 || weathercode===55 || weathercode===56 || weathercode===57){
+        return "./images/clouds.png";
     }
-    else if (codigo[index]== 61 || 63 || 65 || 66 || 67 || 80 || 81 || 82){
-        return "2";
+    else if (weathercode=== 61 || weathercode=== 63 || weathercode=== 65 || weathercode=== 66 || weathercode=== 67 || 
+        weathercode=== 80 || weathercode=== 81 || weathercode=== 82){
+        return ("./images/rain.png");
     }
-    else if (codigo[index]== 71 || 73 || 75 || 77 || 85 || 86){
-        return "3";
+    else if (weathercode=== 71 || weathercode=== 73 || weathercode=== 75 || weathercode=== 77 || 
+        weathercode=== 85 || weathercode=== 86){
+        return ("./images/snow.png");
     }
-    else if (codigo[index]== 95 || 96 || 99){
-        return "4";
+    else if (weathercode=== 95 || weathercode=== 96 || weathercode=== 99){
+        return ("./images/thunderstorm.png");
     }
-console.log(weathercode);
+
 } 
+
+
+
 
 
 

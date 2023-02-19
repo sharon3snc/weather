@@ -97,21 +97,22 @@ function getIcon (weathercode){
     }
     else if (weathercode===1 || weathercode===2 || weathercode===3 || weathercode===45 || 
         weathercode===48 || weathercode===51 || weathercode===53 || weathercode===55 || weathercode===56 || weathercode===57){
-        return "./images/clouds.png";
+        document.getElementsByClassName("imagen").src= "./images/clouds.png";
     }
     else if (weathercode=== 61 || weathercode=== 63 || weathercode=== 65 || weathercode=== 66 || weathercode=== 67 || 
         weathercode=== 80 || weathercode=== 81 || weathercode=== 82){
-        return ("./images/rain.png");
+            document.getElementsByClassName("imagen").innerHTML= "./images/rain.png";
     }
     else if (weathercode=== 71 || weathercode=== 73 || weathercode=== 75 || weathercode=== 77 || 
         weathercode=== 85 || weathercode=== 86){
-        return ("./images/snow.png");
+        document.getElementsByClassName("imagen").innerHTML= "./images/snow.png";
     }
     else if (weathercode=== 95 || weathercode=== 96 || weathercode=== 99){
         return ("./images/thunderstorm.png");
     }
 
 } 
+
 
 
 

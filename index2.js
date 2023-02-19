@@ -56,7 +56,6 @@ function getWeather(data) {
         .then(function(data) {
             console.log(data);
             addWeatherToPage(data);
-            getIcon(data); 
         })
         .catch(function(error) {
             console.log(error);
@@ -75,48 +74,39 @@ function addWeatherToPage(weatherList) {
         HTML += `
                 <div class="weather" id="resultado-${weather.weathercode[index]}">
                     <div class="title">${weather.time[index]}</div>       
-                    <div> <img id="imagen" src="./images/clouds.png" alt="imagen"}> </div>
+                    <div id= "getIcon(${weather.weathercode[index]})"> </div>
                     <div id="temp">
                         <span class= "min">${weather.temperature_2m_min[index]}ºC</span>
                         <span> / </span>
                         <span class="max">${weather.temperature_2m_max[index]}ºC</span>
                     </div>
-                    <div> LLuvia: ${weather.rain_sum[index]} mm </div>
-                    <div> Viento: ${weather.windspeed_10m_max[index]} km/h</div>        
-                </div> `          
+                    <div  id="lluvia"> LLuvia: ${weather.rain_sum[index]} mm </div>
+                    <div id="viento"> Viento: ${weather.windspeed_10m_max[index]} km/h</div>        
+                </div> `             
+
     }
     document.getElementById("resultado").innerHTML = HTML;
 }
 
 
-
-
-function getIcon(weatherList) {
-
-    var imagen = "./images/clouds.png";
-
-for (let index = 0; index < 7; index++) {
-        let weather= weatherList.daily;
-        let codigo = weather.weathercode;
-
-        console.log(codigo[index]);
-
-        if (codigo[index]==0){
-            document.getElementById("imagen").src= "./images/sun.png";
-        }
-        else if (codigo[index]==1 || 2 || 3 || 45 || 48 || 51 || 53 || 55 || 56 || 57){
-            document.getElementById("imagen").src= "./images/clouds.png";
-        }
-        else if (codigo[index]== 61 || 63 || 65 || 66 || 67 || 80 || 81 || 82){
-            document.getElementById("imagen").src= "./images/rain.png";
-        }
-        else if (codigo[index]== 71 || 73 || 75 || 77 || 85 || 86){
-            document.getElementById("imagen").src= "./images/snow.png";
-        }
-        else if (codigo[index]== 95 || 96 || 99){
-            document.getElementById("imagen").src= "./images/thunderstorm.png";
-        }
+function getIcon (weather){
+    if (weathercode==0){
+        return "0";
     }
-}
+    else if (weathercode==1 || 2 || 3 || 45 || 48 || 51 || 53 || 55 || 56 || 57){
+        return "1";
+    }
+    else if (codigo[index]== 61 || 63 || 65 || 66 || 67 || 80 || 81 || 82){
+        return "2";
+    }
+    else if (codigo[index]== 71 || 73 || 75 || 77 || 85 || 86){
+        return "3";
+    }
+    else if (codigo[index]== 95 || 96 || 99){
+        return "4";
+    }
+console.log(weathercode);
+} 
+
 
 
